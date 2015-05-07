@@ -98,4 +98,5 @@ class EAPI(object):
               msisdn = recipient.getAttribute("msisdn")
               status = recipient.getAttribute("status")
               statusId = recipient.getAttribute("statusId")
+        return msisdn, status, statusId
 
