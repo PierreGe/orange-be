@@ -10,7 +10,10 @@ class PhoneNumber(object):
             self.number = text.number
         else:
             self.int_prefix = int_prefix
-            self.number = str(text)
+            text = str(text).replace(" ","")
+            text = text.replace(".","")
+            text = text.replace("/","")
+            self.number = text
             if self.number[0] == '+':
                 self.int_prefix = self.number[:3]
                 self.number = self.number[3:]

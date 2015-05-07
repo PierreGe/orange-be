@@ -82,7 +82,7 @@ class EAPI(object):
         messageID = response.getElementsByTagName("message")[0].childNodes[0].data
         return messageID
 
-    def checkStatus(sms_ids):
+    def checkStatus(self,msg_id):
         """Check status of messages sent """
         xml=self._authentication()
         xml += "<statusReport>\n"
