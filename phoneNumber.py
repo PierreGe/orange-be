@@ -22,9 +22,8 @@ class PhoneNumber(object):
 
             if not self.number.isdigit():
                 raise self.Invalid(text)
-            if not roaming:
-                if not self.is_belgian_gsm:
-                    raise NotABelgianNumber("Error : roaming is off : " + self.int_prefix + self.number)
+            if not roaming and not self.is_belgian_gsm():
+                raise self.NotABelgianNumber("Error : roaming is off : " + self.int_prefix + self.number)
 
     def __str__(self):
         return self.int_prefix + self.number
@@ -42,5 +41,12 @@ class PhoneNumber(object):
             self.int_prefix == '+32' and
             self.number[0] == '4' and
             self.number[1] in ('7', '8', '9') and
-            len(self.number) == 9
-        )
+            len(self.number) == 9)
+
+if __name__ == '__main__':
+    p = PhoneNumber("+352691454545")
+    print(p.int_prefix)
+    print(p.number)
+    print(not p.is_belgian_gsm())
+
+

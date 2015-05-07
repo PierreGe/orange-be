@@ -27,12 +27,13 @@ class GoogleContactsCSV(object):
             for row in reader:
                 name = row['First Name'] + " " +row['Last Name']
                 number = self._findBestNumber([row['Primary Phone'], row['Mobile Phone'],row['Other Phone'], row['Home Phone'], row['Home Phone 2']])
-                self.contactDict[name] = number
+                if number:
+                    self.contactDict[name] = number
 
     def findClosest(self, name):
         """ """
         winner = difflib.get_close_matches(name, self.contactDict.keys(),1,0)
-        print(winner)
+        return winner[0]
 
     def getNumber(self,name):
         return self.contactDict[name]
