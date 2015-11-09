@@ -1,4 +1,4 @@
-import mobistarAPI
+from mobistar import mobistarAPI
 import config
 
 sms=mobistarAPI.EAPI(config.phone_nr,config.email)    #Initialize with your settings
