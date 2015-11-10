@@ -1,5 +1,5 @@
 import requests
-from phonenumber import PhoneNumber
+from .phonenumber import PhoneNumber
 from xml.dom.minidom import parseString
 
 class EAPI(object):

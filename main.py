@@ -1,12 +1,12 @@
-import mobistarAPI
+from mobistar import mobistarAPI
 import config
 
-sms=mobistarAPI.EAPI("+3249764532","me@domain.com")    #Initialize with your settings
+sms=mobistarAPI.EAPI(config.phone_nr,config.email)    #Initialize with your settings
 
 # demande un token
 sms.startRegistration()
 # le user recoit le token par sms
-code = "ABDD"
+code = input("Entrez le code reçu pas sms : ")
 password, permanentKey = sms.verifyRegistration(code)
 
 # on re-cré l'objet avec le password et permanentKey
