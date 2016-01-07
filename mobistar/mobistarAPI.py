@@ -26,13 +26,13 @@ class EAPI(object):
         raise ValueError("No phone number and/or permanent key")
 
     def _request(self, content):
-        HEADERS = {'Content-Type': 'application/xml'}
+        HEADERS = {'Content-Type': 'application/xml', 'charset' : 'UTF-8'}
         return requests.post(self.url, headers=HEADERS, data=content, verify=True)
     
     def _send_xml(self, code):
         """ Used for sending XML request to the server. """
         xml = "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n"
-        xml += "<cp version=\"3.0\" locale=\"en-US\" timezone=\"UTC+1\" clientVersion=\"1.0\" clientProduct=\"eapi\">\n"
+        xml += "<cp version=\"3.0\" locale=\"en-US\" timezone=\"UTC+1\" clientVersion=\"1.1\" clientProduct=\"eapi\">\n"
         xml += code + "\n</cp>\n"
         req = self._request(xml)
         if req.status_code != 200:
