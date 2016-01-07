@@ -84,7 +84,7 @@ class EAPI(object):
 
     def checkStatus(self,msg_id):
         """Check status of messages sent """
-        xml=self._authentication()
+        xml= self._authentication()
         xml += "<statusReport>\n"
         xml += "<message messageId=\"" + msg_id + "\"/>\n"
         xml += "</statusReport>";
@@ -99,4 +99,11 @@ class EAPI(object):
               status = recipient.getAttribute("status")
               statusId = recipient.getAttribute("statusId")
         return msisdn, status, statusId
+
+    def requestCapacity(self):
+        """ Request API enabled capabilities"""
+        xml = self._authentication()
+        xml += "<getCapabilities/>"
+        data = self._send_xml(xml)
+        return str(data)
 
