@@ -1,2 +1,7 @@
-phone_nr='049999999'
-email='lol@lol.com'
+phone_nr="+32499999999";       # Required, intl prefix mandatory
+email="my_mail@domain.com"; # Required during registration
+
+password="";                       # Not used in this example
+permanentKey="";   # Permanent key you get after you verify registration, needed to send sms, check status
+
+roaming = False # allow sms to be send to another country trough this application, charge may apply

@@ -1,17 +1,26 @@
-from mobistar import mobistarAPI
-import config
+# -*- coding: utf-8 -*-
 
-sms=mobistarAPI.EAPI(config.phone_nr,config.email)    #Initialize with your settings
+from orange import api
 
-# demande un token
-sms.startRegistration()
-# le user recoit le token par sms
-code = input("Entrez le code reçu pas sms : ")
-password, permanentKey = sms.verifyRegistration(code)
+try:
+    import config
+except:
+    print("FATAL : configure the file config.py (rename config.py.sample to config.py and edit it)")
 
-# on re-cré l'objet avec le password et permanentKey
-sms=mobistarAPI.EAPI(config.phone_nr, config.email, password, permanentKey)    #Initialize with your settings
+sms = api.EAPI(config.roaming, config.phone_nr, config.email, config.password,
+                      config.permanentKey)  # Initialize with your settings
 
-id = sms.sendSMS("+32494675432","Hello")
+if not config.password:
+    # ask for a token
+    sms.startRegistration()
+    # use receive a token by text
+    code = input("Entrez le code reçu pas sms : ")
+    password, permanentKey = sms.verifyRegistration(code)
+    print("You can edit the config.py file now")
+else:
+    # we re-create the o password et permanentKey
 
-msisdn, status, statusId = sms.checkStatus(id)
+    id = sms.sendSMS("+32484999999", "Hello")
+
+    msisdn, status, statusId = sms.checkStatus(id)
+    # print(sms.history())
