@@ -1,5 +1,5 @@
-# mobistar API
-A python written interface to send sms using mobistar's API
+# Orange.be API
+A python written interface to send sms using orange.be's API
  
 ## First Use
 
@@ -13,7 +13,7 @@ A python written interface to send sms using mobistar's API
 
 #### Then ask for a token
 
-`sms=mobistarAPI.EAPI(config.phone_nr,config.email) `
+`sms=api.EAPI(config.phone_nr,config.email) `
 
 `sms.startRegistration()`
 
@@ -33,7 +33,7 @@ Congrats, you're all set.
 
 ####Create an object mobistarAPI
 
-`sms=mobistarAPI.EAPI(config.phone_nr, config.email, password, permanentKey)`
+`sms=api.EAPI(config.phone_nr, config.email, password, permanentKey)`
 
 ####Send the actual text
 
